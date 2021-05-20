@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/jan"
+        android:title="@string/january"
+        android:contentDescription="@string/content_description_favorite" />
+
+    <item
+        android:id="@+id/feb"
+        android:title="@string/february"
+        android:contentDescription="@string/content_description_favorite" />
+
+    <item
+        android:id="@+id/marc"
+        android:title="@string/march"
+        android:contentDescription="@string/content_description_favorite" />
+
+    <item
+        android:id="@+id/april"
+        android:title="@string/april"
+        android:contentDescription="@string/content_description_favorite" />
+
+    <item
+        android:id="@+id/may"
+        android:title="@string/may"
+        android:contentDescription="@string/content_description_favorite" />
+
+    <item
+        android:id="@+id/jun"
+        android:title="@string/june"
+        android:contentDescription="@string/content_description_favorite" />
+
+    <item
+        android:id="@+id/jul"
+        android:title="@string/july"
+        android:contentDescription="@string/content_description_favorite" />
+
+    <item
+        android:id="@+id/august"
+        android:title="@string/august"
+        android:contentDescription="@string/content_description_favorite" />
+
+    <item
+        android:id="@+id/sept"
+        android:title="@string/september"
+        android:contentDescription="@string/content_description_favorite" />
+
+    <item
+        android:id="@+id/oct"
+        android:title="@string/october"
+        android:contentDescription="@string/content_description_favorite" />
+
+    <item
+        android:id="@+id/nov"
+        android:title="@string/november"
+        android:contentDescription="@string/content_description_favorite" />
+
+    <item
+        android:id="@+id/dec"
+        android:title="@string/december"
+        android:contentDescription="@string/content_description_favorite" />
+</menu>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.ExpenseManagerFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:liftOnScroll="true">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/top_app_bar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/expense_menu_bar"
+            app:navigationIcon="@drawable/ic_arrow_back_24"
+            app:title="@string/expenses" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/expense_tab_layout"
+            style="@style/Widget.MaterialComponents.TabLayout.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--            <com.google.android.material.tabs.TabItem-->
+            <!--                android:id="@+id/all_category"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:icon="@drawable/ic__all"-->
+            <!--                android:text="@string/all"/>-->
+
+            <!--            <com.google.android.material.tabs.TabItem-->
+            <!--                android:id="@+id/category_1"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:icon="@drawable/ic_income"-->
+            <!--                android:text="@string/income"/>-->
+
+            <!--            <com.google.android.material.tabs.TabItem-->
+            <!--                android:id="@+id/category_2"-->
+            <!--                android:icon="@drawable/ic_expense"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="@string/expense"/>-->
+
+
+        </com.google.android.material.tabs.TabLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/tab_layout_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+
+    </androidx.viewpager.widget.ViewPager>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_transactions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        app:tint="@android:color/white"
+        android:contentDescription="@string/add_transaction"
+        app:srcCompat="@drawable/ic_add_24"
+        android:focusable="true" />
+
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
