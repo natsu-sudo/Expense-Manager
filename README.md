@@ -14,7 +14,7 @@ A Simple Expense Tracker App 📱 built to demonstrate the use of modern android
 
 ## Package Structure 📦
     
-    dev.spikeysanju.expenso # Root Package
+    com.coding.expense # Root Package
     ├── adapter                  # Adapter for RecyclerView
     ├── data                # For data handling.
     │   ├── dao           # Local Persistence Database. Room (SQLite) database 
