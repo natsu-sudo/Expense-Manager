@@ -82,5 +82,5 @@
     <string name="date_exception">Please Enter Date in Proper Format</string>
     <string name="one_year">One Year</string>
     <string name="under_development">Under Development</string>
-    <string name="not_learned">"As this Feature Requires Service that's why didn't implemented it "</string>
+    <string name="not_implemented">"This Feature is in Development.Thank You For Your Patience"</string>
 </resources>

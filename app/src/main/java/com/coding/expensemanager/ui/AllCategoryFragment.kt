@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -67,7 +66,7 @@ class AllCategoryFragment : Fragment() {
         binding.remindMe.setOnClickListener {
             MaterialAlertDialogBuilder(it.context, R.style.natsu_custom)
                 .setTitle(getString(R.string.under_development))
-                .setMessage(R.string.not_learned)
+                .setMessage(R.string.not_implemented)
                 .setPositiveButton(R.string.ok) {dialog, which ->
 
                 }
