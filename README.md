@@ -3,7 +3,7 @@ A Expense Manger Where User Can Tract it Income and Expense.
 ## Overview
 
 This project shows how user can organize and track their Money and Spend
-A Simple Expense Tracker App 📱 built to demonstrate the use of modern android architecture component with MVVM Architecture 🏗. *Made with love ❤️ by [kaykap]
+A Simple Expense Tracker App 📱 built to demonstrate the use of modern android architecture component with MVVM Architecture 🏗. *Made with love ❤️ by [Krishana]
 
 
 
