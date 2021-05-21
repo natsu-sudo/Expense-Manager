@@ -24,7 +24,8 @@ class MonthlyCardAdapter(val map: Map<Int, List<TransactionsTable>>) :ListAdapte
         private val monthlyViewAll: MaterialButton =view.findViewById(R.id.monthly_view_all)
         fun onBind(item: Int) {
             monthName.text=UtilClass.getMonth(item)
-            var monthlyIndicatorExceed= map[item]?.let { checkForExceed(it) }
+            val monthlyIndicatorExceed= map[item]?.let { checkForExceed(it) }
+            val year: Int = map[item]?.let { getYear(it) }!!
             if (monthlyIndicatorExceed == true){
                 budgetExceed.visibility=View.INVISIBLE
                 indicator.setBackgroundColor(ContextCompat.getColor(view.context, R.color.income_default_color))
@@ -39,7 +40,7 @@ class MonthlyCardAdapter(val map: Map<Int, List<TransactionsTable>>) :ListAdapte
                 addItemDecoration(DividerItemDecoration(view.context, RecyclerView.VERTICAL))
             }
             monthlyViewAll.setOnClickListener {
-                listener?.clickListener(item)
+                listener?.clickListener(item,year)
 
             }
             val list= mutableListOf<TransactionsTable>()
@@ -59,6 +60,10 @@ class MonthlyCardAdapter(val map: Map<Int, List<TransactionsTable>>) :ListAdapte
                 }
             }
             (monthlyRecyclerView.adapter as CustomMonthlyWiseAdapter).submitList(list)
+        }
+
+        private fun getYear(it: List<TransactionsTable>):Int {
+            return it[0].year
         }
 
         private fun checkForExceed(list: List<TransactionsTable>): Boolean {
@@ -87,7 +92,7 @@ class MonthlyCardAdapter(val map: Map<Int, List<TransactionsTable>>) :ListAdapte
         holder.onBind(getItem(position))
     }
     interface ChangeFragment{
-        fun clickListener(item:Int)
+        fun clickListener(item: Int, year: Int)
     }
 
 }

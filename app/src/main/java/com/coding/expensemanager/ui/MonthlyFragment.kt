@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.coding.expensemanager.apdapter.TransactionAdapter
 import com.coding.expensemanager.databinding.FragmentMonthlyBinding
+import com.coding.expensemanager.pojo.MonthYear
 import com.coding.expensemanager.util.UtilClass
 import com.coding.expensemanager.viewmodel.AllTransactionListViewModel
+import com.coding.expensemanager.viewmodel.MonthlyViewModel
 import com.coding.expensemanager.viewmodel.ViewModelFactory
 
 
@@ -22,18 +24,19 @@ import com.coding.expensemanager.viewmodel.ViewModelFactory
  * Where User Can See the Transaction Month Wise
  */
 class MonthlyFragment : Fragment() {
+    private var year: Int = 0
     private val TAG = "MonthlyFragment"
     private var item: Int = 0
     private var _binding: FragmentMonthlyBinding? = null
     private val binding get() = _binding!!
-    private lateinit var allTransactionListViewModel: AllTransactionListViewModel
+    private lateinit var allTransactionListViewModel: MonthlyViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         allTransactionListViewModel = activity?.run {
             ViewModelProvider(viewModelStore, ViewModelFactory(activity!!))
-                .get(AllTransactionListViewModel::class.java)
+                .get(MonthlyViewModel::class.java)
         }!!
-        allTransactionListViewModel.updateMonth(item)
+        allTransactionListViewModel.updateMonth(MonthYear(item,year))
     }
 
     override fun onCreateView(
@@ -57,7 +60,7 @@ class MonthlyFragment : Fragment() {
             binding.transRecycleList.adapter = TransactionAdapter()
             (binding.transRecycleList.adapter as TransactionAdapter).submitList(it)
         })
-        allTransactionListViewModel.getMonthlyNetBalance.observe(viewLifecycleOwner, {
+        allTransactionListViewModel.getNetBalance.observe(viewLifecycleOwner, {
             Log.d(TAG, "onViewCreated: $it")
             binding.netBalance.text = it.netBalance.toFloat().toString()
             binding.amountSaved.text = it.income.toFloat().toString()
@@ -77,9 +80,10 @@ class MonthlyFragment : Fragment() {
     companion object {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(item: Int) =
+        fun newInstance(item: Int, year: Int) =
             MonthlyFragment().apply {
                 this.item = item
+                this.year= year
             }
     }
 }

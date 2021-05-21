@@ -49,7 +49,6 @@
     <string name="recent_transaction">Recent Transaction</string>
     <string name="budget_exceed">\u0020 BUDGET EXCEED</string>
     <string name="june">June</string>
-    <string name="sun">SUN</string>
     <string name="mon">MON</string>
     <string name="tue">TUE</string>
     <string name="wed">WED</string>
@@ -83,4 +82,6 @@
     <string name="one_year">One Year</string>
     <string name="under_development">Under Development</string>
     <string name="not_implemented">"This Feature is in Development.Thank You For Your Patience"</string>
+    <string name="sun">SUN</string>
+
 </resources>

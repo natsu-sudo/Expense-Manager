@@ -10,9 +10,12 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.coding.expensemanager.apdapter.CalendarAdapter
 import com.coding.expensemanager.databinding.FragmentCalenderBinding
+import com.coding.expensemanager.pojo.MonthYear
 import com.coding.expensemanager.viewmodel.CalenderViewModel
 import com.coding.expensemanager.viewmodel.ViewModelFactory
 import java.time.LocalDate
@@ -29,8 +32,8 @@ class CalenderFragment : Fragment() {
     private lateinit var selectedDate:LocalDate
     private lateinit var calenderViewModel: CalenderViewModel
     private  val TAG = "CalenderFragment"
-    private var _bindind:FragmentCalenderBinding?=null
-    private val binding get() = _bindind!!
+    private var _binding:FragmentCalenderBinding?=null
+    private val binding get() = _binding!!
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,20 +49,23 @@ class CalenderFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _bindind=FragmentCalenderBinding.inflate(inflater, container, false)
+        _binding=FragmentCalenderBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        calenderViewModel.updateMonth(selectedDate.monthValue)
+        calenderViewModel.updateMonthAndYear(MonthYear(selectedDate.monthValue,selectedDate.year))
         binding.topAppBarCalc.setNavigationOnClickListener {
             // Handle navigation icon press
             activity?.onBackPressed()
         }
         binding.calendarRecyclerView.apply {
             layoutManager=GridLayoutManager(activity, 7)
+            setHasFixedSize(true)
+            addItemDecoration(DividerItemDecoration(activity, RecyclerView.VERTICAL))
+            addItemDecoration(DividerItemDecoration(activity, RecyclerView.HORIZONTAL))
         }
         calenderViewModel.getMonthlyMap.observe(viewLifecycleOwner, Observer {
             binding.monthYearTv.text = monthYearFromDate(selectedDate)
@@ -110,18 +116,18 @@ class CalenderFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     fun previousMonthAction() {
         selectedDate = selectedDate.minusMonths(1)
-        calenderViewModel.updateMonth(selectedDate.monthValue)
+        calenderViewModel.updateMonthAndYear(MonthYear(selectedDate.monthValue,selectedDate.year))
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun nextMonthAction() {
         selectedDate = selectedDate.plusMonths(1)
-        calenderViewModel.updateMonth(selectedDate.monthValue)
+        calenderViewModel.updateMonthAndYear(MonthYear(selectedDate.monthValue,selectedDate.year))
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        _bindind=null
+        _binding=null
     }
 
 

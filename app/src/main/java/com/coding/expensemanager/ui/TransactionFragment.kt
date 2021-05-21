@@ -54,7 +54,9 @@ class TransactionFragment : Fragment() {
             binding.amountSaved.text=it.income.toFloat().toString()
             binding.amountSpent.text=it.expense.toFloat().toString()
             with(binding.progressIndicator){
-                progress= ((it.netBalance*100)/it.income)
+                if(it.income!=0){
+                    progress= ((it.netBalance*100)/it.income)
+                }
             }
         })
         binding.transactionTopAppBar.setOnClickListener {

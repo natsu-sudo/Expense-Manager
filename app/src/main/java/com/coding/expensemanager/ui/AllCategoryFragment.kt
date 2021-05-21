@@ -76,13 +76,13 @@ class AllCategoryFragment : Fragment() {
     }
 
     private fun setMonthlyTransaction() {
-        binding.monthlyRecyclerView.apply {
+        binding.yearRecyclerView.apply {
             layoutManager = LinearLayoutManager(activity)
             setHasFixedSize(true)
         }
-        allTransactionListViewModel.getShortMonthlyList.observe(viewLifecycleOwner, Observer {
-            binding.monthlyRecyclerView.adapter = MonthlyCardAdapter(it)
-            (binding.monthlyRecyclerView.adapter as MonthlyCardAdapter).submitList((it.keys).toList())
+        allTransactionListViewModel.getYearlyList.observe(viewLifecycleOwner, Observer {
+            binding.yearRecyclerView.adapter = YearAdapterCard(it)
+            (binding.yearRecyclerView.adapter as YearAdapterCard).submitList((it.keys).toList().sorted())
         })
 
     }
