@@ -105,7 +105,7 @@ class AddTransactions : Fragment() {
                             if (fieldCheck() && recurringCheck()) {
                                 while (recurringStartTime <= recurringEndTime) {
                                     val selectedDate =
-                                        binding.transactionCalender.text.toString().split(
+                                        UtilClass.convertToDate(recurringStartTime).split(
                                             "/"
                                         )
                                     val transactions: TransactionsTable = try {

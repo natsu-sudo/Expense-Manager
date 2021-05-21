@@ -47,9 +47,9 @@ class MainActivity : AppCompatActivity(),AllCategoryFragment.ChangeFragment,Mont
         }
     }
 
-    override fun clickListener(item: Int) {
+    override fun clickListener(item: Int, year: Int) {
         with(supportFragmentManager.beginTransaction()) {
-            replace(R.id.main_container, MonthlyFragment.newInstance(item))
+            replace(R.id.main_container, MonthlyFragment.newInstance(item,year))
             addToBackStack(null)
             commit()
         }

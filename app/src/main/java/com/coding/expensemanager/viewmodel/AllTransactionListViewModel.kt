@@ -43,7 +43,19 @@ class AllTransactionListViewModel(context: Context) : ViewModel() {
     }
 
     val getShortMonthlyList: LiveData<Map<Int, List<TransactionsTable>>> = Transformations
-        .switchMap(getMonthlyReport(), ::convertToMap)
+        .switchMap(getMonthlyReport(), ::convertToMonthlyMap)
+
+    val getYearlyList: LiveData<Map<Int, List<TransactionsTable>>> = Transformations
+        .switchMap(getFullListFromTable(),::convertToYearlyMap)
+
+    private fun convertToYearlyMap(list: List<TransactionsTable>): LiveData<Map<Int, List<TransactionsTable>>> {
+        val temp = MutableLiveData<Map<Int, List<TransactionsTable>>>()
+        val returnList = list.groupBy {
+            it.year
+        }
+        temp.value = returnList
+        return temp
+    }
 
 
     /**
@@ -65,7 +77,7 @@ class AllTransactionListViewModel(context: Context) : ViewModel() {
     /**
      * @param list:converting list to map so that we can show the data according to month
      */
-    private fun convertToMap(list: List<TransactionsTable>): LiveData<Map<Int, List<TransactionsTable>>> {
+    private fun convertToMonthlyMap(list: List<TransactionsTable>): LiveData<Map<Int, List<TransactionsTable>>> {
         val temp = MutableLiveData<Map<Int, List<TransactionsTable>>>()
         val returnList = list.groupBy {
             it.month

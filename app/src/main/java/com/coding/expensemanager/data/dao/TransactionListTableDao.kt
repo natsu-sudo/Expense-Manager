@@ -3,6 +3,7 @@ package com.coding.expensemanager.data.dao
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
+import com.coding.expensemanager.pojo.MonthYear
 import com.coding.expensemanager.pojo.TransactionsTable
 
 @Dao
@@ -27,6 +28,9 @@ interface TransactionListTableDao {
 
     @Query("SELECT * FROM transaction_table WHERE transaction_type == :transactionType ORDER BY timestamp DESC")
     fun getIncomeOrExpenseList(transactionType: Int):LiveData<List<TransactionsTable>>
+
+    @Query("SELECT * FROM transaction_table WHERE month == :month AND year == :year ORDER BY timestamp DESC")
+    fun getListByMonthAndYear(month: Int,year: Int):LiveData<List<TransactionsTable>>
 
 
 
