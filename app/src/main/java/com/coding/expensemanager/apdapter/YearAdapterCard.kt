@@ -1,4 +1,4 @@
-package com.coding.expensemanager.ui
+package com.coding.expensemanager.apdapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.*
 import com.coding.expensemanager.R
-import com.coding.expensemanager.apdapter.MonthlyCardAdapter
 import com.coding.expensemanager.pojo.TransactionsTable
 
-class YearAdapterCard(val map: Map<Int, List<TransactionsTable>>) : ListAdapter<Int, YearAdapterCard.YearViewHolder>(YearDiffCallBack())  {
+class YearAdapterCard(val map: Map<Int, List<TransactionsTable>>) : ListAdapter<Int, YearAdapterCard.YearViewHolder>(
+    YearDiffCallBack()
+)  {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): YearViewHolder {
         val view:View= LayoutInflater.from(parent.context).inflate(R.layout.year_view,parent,false)
         return YearViewHolder(view)
